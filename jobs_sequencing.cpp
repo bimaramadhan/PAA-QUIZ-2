@@ -89,7 +89,6 @@ int main(void) {
     }
   }
   
-
   //time slots yang kosong diinisialisasikan dengan -1 (-1 menandakan kosong/tidak ada isinya)
   for(i = 1; i <= dmax; i++) {
     timeslot[i] = -1;
