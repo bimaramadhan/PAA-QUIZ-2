@@ -95,7 +95,7 @@ void jobSequencingWithDeadline(Job jobs[], int n) {
 
   printf("\ndmax: %d\n", dmax);
   
-  //
+  //perulangan untuk memasukkan job ke timeslot yang tersedia
   for(i = 0; i < n; i++) {
     k = minValue(dmax, jobs[i].deadline);
     while(k >= 1) {
