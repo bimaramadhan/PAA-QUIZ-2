@@ -12,12 +12,7 @@ typedef struct Job {
 
 //fungsi untuk menghitung job mana yang akan diambil berdasar deadline dan profit secara greedy 
 void jobSequencingWithDeadline(Job jobs[], int n);
-
-//fungsi mencari nilai terkecil dari dua nilai yang dibandingkan
-int minValue(int x, int y) {
-  if(x < y) return x;
-  return y;
-}
+int minValue(int x, int y);
 
 int main(void) {
   //variables
@@ -67,10 +62,16 @@ int main(void) {
   jobSequencingWithDeadline(jobs, n);
 
   return 0;
-}
+  }
 
-//fungsi untuk menghitung job mana yang akan diambil berdasar deadline dan profit secara greedy 
-void jobSequencingWithDeadline(Job jobs[], int n) {
+  //fungsi mencari nilai terkecil dari dua nilai yang dibandingkan
+  int minValue(int x, int y) {
+  if(x < y) return x;
+  return y;
+  }
+
+  //fungsi untuk menghitung job mana yang akan diambil berdasar deadline dan profit secara greedy 
+  void jobSequencingWithDeadline(Job jobs[], int n) {
   //variables
   int i, j, k, maxprofit;
 
@@ -87,6 +88,7 @@ void jobSequencingWithDeadline(Job jobs[], int n) {
       dmax = jobs[i].deadline;
     }
   }
+  
 
   //time slots yang kosong diinisialisasikan dengan -1 (-1 menandakan kosong/tidak ada isinya)
   for(i = 1; i <= dmax; i++) {
