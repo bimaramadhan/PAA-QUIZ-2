@@ -2,12 +2,15 @@
 
 #define MAX 100
 
+using namespace std;
+
 typedef struct Job {
   char id[MAX];
   int deadline;
   int profit;
 } Job;
 
+//fungsi untuk menghitung job mana yang akan diambil berdasar deadline dan profit secara greedy 
 void jobSequencingWithDeadline(Job jobs[], int n);
 
 //fungsi mencari nilai terkecil dari dua nilai yang dibandingkan
@@ -55,9 +58,9 @@ int main(void) {
   }
   
   //print id job, deadline dan profit yang sudah diurutkan berdasar profit terbesar 
-  printf("\n%10s %10s %10s\n", "Id Job", "Deadline", "Profit");
+  printf("\n\t%s\t|%s\t|%s\n", "Id Job", "Deadline", "Profit");
   for(i = 0; i < n; i++) {
-    printf("%10s %10i %10i\n", jobs[i].id, jobs[i].deadline, jobs[i].profit);
+    printf("\t%s\t|%d\t\t|%d\n", jobs[i].id, jobs[i].deadline, jobs[i].profit);
   }
 
   //memanggil fungsi untuk menghitung job mana yang akan diambil berdasar deadline dan profit secara greedy 
@@ -90,16 +93,19 @@ void jobSequencingWithDeadline(Job jobs[], int n) {
     timeslot[i] = -1;
   }
 
-  printf("dmax: %d\n", dmax);
-
-  for(i = 1; i <= n; i++) {
-    k = minValue(dmax, jobs[i - 1].deadline);
+  printf("\ndmax: %d\n", dmax);
+  
+  //
+  for(i = 0; i < n; i++) {
+    k = minValue(dmax, jobs[i].deadline);
     while(k >= 1) {
+      //jika timeslot kosong maka diisi
       if(timeslot[k] == -1) {
-        timeslot[k] = i-1;
+        timeslot[k] = i;
         filledTimeSlot++;
         break;
       }
+      //jika timeslot sudah terisi decrement k untuk melakukan cek timeslot lain yang belum terisi
       k--;
     }
 
